@@ -115,10 +115,11 @@ $(document).ready(function () {
                 else {
 
                     // if there isn't a main property in mySecondGiphyResponse, then handle the error as follows
+                // returning an error message to the user, and Since I have handled that with my try...catch block(to return the message property in any errors) in my business logic file, I just return only mySecondGiphyResponse
                     $(".gif-shower-two").prepend(
                         `
                         <br> <br>
-                        <h5>There was an error processing your Request: ${mySecondGiphyResponse.message}</h5>    
+                        <h5>There was an error processing your Request: ${mySecondGiphyResponse}</h5>    
                         <h5>Please Try again</h5>    
                     `
                     );
@@ -162,7 +163,7 @@ $(document).ready(function () {
                 
             }
             
-            async function makeTrendCall(){
+            async function makeTrendCall(){ 
                 let thirdCall = await TrendingGif.getTrendingGif(userPick);
                 getTrendGif(thirdCall);
             }
